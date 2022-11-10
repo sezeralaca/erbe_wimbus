@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "390772207496",
+    "project_id": "erbe-wim",
+    "storage_bucket": "erbe-wim.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390772207496:android:f373e3c19501654929943d",
+        "android_client_info": {
+          "package_name": "com.erbe.wimbus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390772207496-6uqmg4bb5fbncjgpgr94vkmpkuh8i4t2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzMHIUmFigi5vFxsRdyKhWlsXbo68IEoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390772207496-6uqmg4bb5fbncjgpgr94vkmpkuh8i4t2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
