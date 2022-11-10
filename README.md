@@ -1,6 +1,7 @@
-# erbe
+# Erbe Wimbus
 
-A new Flutter project.
+Flutter project created for Erbe Yazılım.
+Mobile Application for collecting data from wimbus
 
 ## Getting Started
 
