@@ -43,6 +43,7 @@ dependencies:
   provider: ^6.0.3
   firebase_core: ^2.1.1
   firebase_auth: ^4.1.1
+  
 
 dev_dependencies:
   flutter_test:
@@ -54,7 +55,14 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.0.5
 
+
+flutter_native_splash:
+  image: "assets/images/logo_black.png"
+  color: "#404258"
+  image_dark: "assets/images/logo_white.png"
+  color_dark: "#000000"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

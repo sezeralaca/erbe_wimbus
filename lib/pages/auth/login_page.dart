@@ -17,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    String topImage = "assets/images/topImage.png";
+    String topImage = "assets/images/wave.png";
     return Scaffold(
       body: appBody(height, topImage),
     );
