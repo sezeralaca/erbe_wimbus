@@ -43,11 +43,11 @@ class _LoginPageState extends State<LoginPage> {
                     customSizedBox(),
                     passwordTextField(),
                     customSizedBox(),
-                    forgotPasswordButton(),
+                    /* forgotPasswordButton(), */
                     customSizedBox(),
                     signInButton(),
                     customSizedBox(),
-                    signUpButton()
+                    /* signUpButton() */
                   ],
                 ),
               ),
@@ -59,8 +59,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Text titleText() {
-    return Text(
-      "Merhaba, \nHosgeldin",
+    return const Text(
+      "Merhaba, \nHoş Geldiniz",
       style: CustomTextStyle.titleTextStyle,
     );
   }
@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
       onSaved: (value) {
         email = value!;
       },
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       decoration: customInputDecoration("Email"),
     );
   }
@@ -91,12 +91,12 @@ class _LoginPageState extends State<LoginPage> {
         password = value!;
       },
       obscureText: true,
-      style: TextStyle(color: Colors.white),
-      decoration: customInputDecoration("Sifre"),
+      style: const TextStyle(color: Colors.white),
+      decoration: customInputDecoration("Şifre"),
     );
   }
 
-  Center forgotPasswordButton() {
+  /* Center forgotPasswordButton() {
     return Center(
       child: TextButton(
         onPressed: () {},
@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
-  }
+  } */
 
   Center signInButton() {
     return Center(
@@ -115,10 +115,10 @@ class _LoginPageState extends State<LoginPage> {
         child: Container(
           height: 50,
           width: 150,
-          margin: EdgeInsets.symmetric(horizontal: 60),
+          margin: const EdgeInsets.symmetric(horizontal: 60),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: Color(0xff31274F)),
+              color: CustomColors.loginButtonColor),
           child: Center(
             child: customText("Giris Yap", CustomColors.loginButtonTextColor),
           ),
@@ -165,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget customSizedBox() => SizedBox(
+  Widget customSizedBox() => const SizedBox(
         height: 20,
       );
 
@@ -177,13 +177,13 @@ class _LoginPageState extends State<LoginPage> {
   InputDecoration customInputDecoration(String hintText) {
     return InputDecoration(
       hintText: hintText,
-      hintStyle: TextStyle(color: Colors.grey),
-      enabledBorder: UnderlineInputBorder(
+      hintStyle: const TextStyle(color: Colors.grey),
+      enabledBorder: const UnderlineInputBorder(
         borderSide: BorderSide(
           color: Colors.grey,
         ),
       ),
-      focusedBorder: UnderlineInputBorder(
+      focusedBorder: const UnderlineInputBorder(
         borderSide: BorderSide(
           color: Colors.grey,
         ),

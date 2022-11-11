@@ -12,7 +12,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,14 +25,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       routes: {
-        "/loginPage": (context) => LoginPage(),
-        "/signUp": (context) => SignUp(),
-        "/homePage": (context) => HomePage()
+        "/loginPage": (context) => const LoginPage(),
+        "/signUp": (context) => const SignUp(),
+        "/homePage": (context) => const HomePage()
       },
       theme: ThemeData(
         scaffoldBackgroundColor: CustomColors.scaffoldBackgroundColor,
       ),
-      home: Scaffold(
+      home: const Scaffold(
         body: LoginPage(),
       ),
     );
