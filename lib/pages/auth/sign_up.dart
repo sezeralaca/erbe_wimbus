@@ -58,7 +58,7 @@ class _SignUpState extends State<SignUp> {
   }
 
   Text titleText() {
-    return Text(
+    return const Text(
       "Merhaba, \nHosgeldin",
       style: CustomTextStyle.titleTextStyle,
     );
@@ -70,11 +70,12 @@ class _SignUpState extends State<SignUp> {
         if (value!.isEmpty) {
           return "Bilgileri Eksiksiz Doldurunuz";
         } else {}
+        return null;
       },
       onSaved: (value) {
         email = value!;
       },
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       decoration: customInputDecoration("Email"),
     );
   }
@@ -85,12 +86,13 @@ class _SignUpState extends State<SignUp> {
         if (value!.isEmpty) {
           return "Bilgileri Eksiksiz Doldurunuz";
         } else {}
+        return null;
       },
       onSaved: (value) {
         password = value!;
       },
       obscureText: true,
-      style: TextStyle(color: Colors.white),
+      style: const TextStyle(color: Colors.white),
       decoration: customInputDecoration("Sifre"),
     );
   }
@@ -111,13 +113,11 @@ class _SignUpState extends State<SignUp> {
     if (formkey.currentState!.validate()) {
       formkey.currentState!.save();
       try {
-        var userResult = await firebaseAuth.createUserWithEmailAndPassword(
-            email: email, password: password);
         formkey.currentState!.reset();
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text(
-                "Kullanici basariliyla kaydedildi, giris sayfasina yonlendiriliyorsunuz"),
+                "Kullanici başarıyla kaydedildi"),
           ),
         );
         Navigator.pushReplacementNamed(context, "/loginPage");
@@ -151,7 +151,7 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget customSizedBox() => SizedBox(
+  Widget customSizedBox() => const SizedBox(
         height: 20,
       );
 
@@ -163,13 +163,13 @@ class _SignUpState extends State<SignUp> {
   InputDecoration customInputDecoration(String hintText) {
     return InputDecoration(
       hintText: hintText,
-      hintStyle: TextStyle(color: Colors.grey),
-      enabledBorder: UnderlineInputBorder(
+      hintStyle: const TextStyle(color: Colors.grey),
+      enabledBorder: const UnderlineInputBorder(
         borderSide: BorderSide(
           color: Colors.grey,
         ),
       ),
-      focusedBorder: UnderlineInputBorder(
+      focusedBorder: const UnderlineInputBorder(
         borderSide: BorderSide(
           color: Colors.grey,
         ),

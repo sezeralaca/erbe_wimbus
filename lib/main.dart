@@ -1,9 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:erbe/pages/auth/login_page.dart';
 import 'package:erbe/pages/auth/sign_up.dart';
-import 'package:erbe/pages/home_page.dart';
 import 'package:erbe/utils/customColors.dart';
 import 'firebase_options.dart';
 
@@ -23,11 +21,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Erbe Yazılım',
       routes: {
         "/loginPage": (context) => const LoginPage(),
         "/signUp": (context) => const SignUp(),
-        "/homePage": (context) => const HomePage()
+        
       },
       theme: ThemeData(
         scaffoldBackgroundColor: CustomColors.scaffoldBackgroundColor,

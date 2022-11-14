@@ -1,3 +1,4 @@
+import 'package:erbe/list/main_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:erbe/utils/customColors.dart';
@@ -60,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Text titleText() {
     return const Text(
-      "Merhaba, \nHoş Geldiniz",
+      "Merhaba,\nHoş Geldiniz",
       style: CustomTextStyle.titleTextStyle,
     );
   }
@@ -71,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
         if (value!.isEmpty) {
           return "Bilgileri Eksiksiz Doldurunuz";
         } else {}
+        return null;
       },
       onSaved: (value) {
         email = value!;
@@ -86,6 +88,7 @@ class _LoginPageState extends State<LoginPage> {
         if (value!.isEmpty) {
           return "Bilgileri Eksiksiz Doldurunuz";
         } else {}
+        return null;
       },
       onSaved: (value) {
         password = value!;
@@ -120,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
               borderRadius: BorderRadius.circular(50),
               color: CustomColors.loginButtonColor),
           child: Center(
-            child: customText("Giris Yap", CustomColors.loginButtonTextColor),
+            child: customText("Giriş Yap", CustomColors.loginButtonTextColor),
           ),
         ),
       ),
@@ -133,8 +136,11 @@ class _LoginPageState extends State<LoginPage> {
       try {
         final userResult = await firebaseAuth.signInWithEmailAndPassword(
             email: email, password: password);
-        Navigator.pushReplacementNamed(context, "/homePage");
-        print(userResult.user!.email);
+        // ignore: use_build_context_synchronously
+        Navigator.push(context,
+          MaterialPageRoute(builder: (context) =>  MyApp()),
+        );
+        print(userResult.user!.uid);
       } catch (e) {
         print(e.toString());
       }
@@ -146,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
       child: TextButton(
         onPressed: () => Navigator.pushNamed(context, "/signUp"),
         child: customText(
-          "Hesap Olustur",
+          "Yeni Firma",
           CustomColors.textButtonColor,
         ),
       ),
