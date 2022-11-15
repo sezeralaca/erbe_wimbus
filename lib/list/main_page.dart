@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: MainPage(),
+        home: const MainPage(),
       );
 }
 
@@ -43,6 +43,9 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: const Text('Test Apartmanı'),
+          titleTextStyle: const TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold, fontSize: 25),
+          centerTitle: true,
+
         ),
         body: buildUsers(),
         // body: buildSingleUser(),
@@ -92,7 +95,8 @@ class _MainPageState extends State<MainPage> {
 
   Widget buildUser(User user) => ListTile(
         
-        leading: CircleAvatar(child: Text('${user.daireNo}')),   
+        leading: CircleAvatar(child: Text('${user.daireNo}', style: const TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold, fontSize: 25),)),   
+      
         title: Text(user.name),
         subtitle: Text(user.daireElk.toString(),),
 
