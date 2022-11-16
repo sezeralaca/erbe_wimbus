@@ -1,43 +1,46 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class User {
-  String id;
-  final String name;
+  //final String daireNo;
   final int daireNo;
-  final int daireSu;
-  final int daireElk;
-  final int daireIsi;
-
-  final DateTime tarih;
+  final String adSoyad;
+  final String telefon;
+  final int protokol;
+  final int sayacTipi;
+  final String sayacNo;
+  final String sonOkumaTarih;
+  final int sonEndeks;
 
   User({
-    this.id = '',
-    required this.name,
     required this.daireNo,
-    required this.daireSu,
-    required this.daireElk,
-    required this.daireIsi,
-    required this.tarih,
+    required this.adSoyad,
+    required this.telefon,
+    required this.protokol,
+    required this.sayacTipi,
+    required this.sayacNo,
+    required this.sonOkumaTarih,
+    required this.sonEndeks
   });
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'name': name,
         'daireNo': daireNo,
-        'daireSu': daireSu,
-        'daireElk': daireElk,
-        'daireIsi': daireIsi,
-
-        'tarih': tarih,
+        'adSoyad': adSoyad,
+        'telefon': telefon,
+        'protokol': protokol,
+        'sayacTipi': sayacTipi,
+        'sayacNo': sayacNo,
+        'sonOkumaTarih': sonOkumaTarih,
+        'sonEndeks': sonEndeks
       };
 
   static User fromJson(Map<String, dynamic> json) => User(
-        id: json['id'],
-        name: json['name'],
         daireNo: json['daireNo'],
-        daireSu: json['daireSu'],
-        daireElk: json['daireElk'],
-        daireIsi: json['daireIsi'],
-        tarih: (json['tarih'] as Timestamp).toDate(),
+        adSoyad: json['adSoyad'],
+        telefon: json['telefon'],
+        protokol: json['protokol'],
+        sayacTipi: json['sayacTipi'],
+        sayacNo: json['sayacNo'],
+        sonOkumaTarih: json['sonOkumaTarih'],
+        sonEndeks: json['sonEndeks'],
       );
 }

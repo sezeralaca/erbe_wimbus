@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:erbe/widgets/fab_widget.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:erbe/list/user.dart';
 import 'package:erbe/list/user_page.dart';
@@ -49,14 +50,8 @@ class _MainPageState extends State<MainPage> {
         ),
         body: buildUsers(),
         // body: buildSingleUser(),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const UserPage(),
-            ));
-          },
-        ),
+        floatingActionButton: CircularFabWidget(),
+
       );
 
   Widget buildUsers() => StreamBuilder<List<User>>(
@@ -95,11 +90,9 @@ class _MainPageState extends State<MainPage> {
 
   Widget buildUser(User user) => ListTile(
         
-        leading: CircleAvatar(child: Text('${user.daireNo}', style: const TextStyle(fontFamily: 'Montserrat', fontWeight: FontWeight.bold, fontSize: 25),)),   
-      
-        title: Text(user.name),
-        subtitle: Text(user.daireElk.toString(),),
-
+        leading: CircleAvatar(child: Text('${user.daireNo}',), radius: 25,),
+        title: Text(user.adSoyad),
+        subtitle: Text(user.telefon.toString(),),
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => UserPage(user: user),
         )),
@@ -115,7 +108,7 @@ class _MainPageState extends State<MainPage> {
 
   Future<User?> readUser() async {
     /// Get single document by ID
-    final docUser = FirebaseFirestore.instance.collection('daire').doc('my-id');
+    final docUser = FirebaseFirestore.instance.collection('daire').doc();
     final snapshot = await docUser.get();
     if (snapshot.exists) {
       return User.fromJson(snapshot.data()!);
@@ -123,13 +116,13 @@ class _MainPageState extends State<MainPage> {
     return null;
   }
 
-  Future createUser({required String name}) async {
+  Future createUser({required String adSoyad}) async {
     /// Reference to document
     final docUser = FirebaseFirestore.instance.collection('daire').doc();
 
     final json = {
-      'id': docUser.id,
-      'name': name,
+
+      'adSoyad': adSoyad,
       'age': 21,
       'birthday': DateTime(01, 08, 2000),
     };
@@ -200,12 +193,12 @@ class _MainPageState extends State<MainPage> {
 
                   // Update specific fields
                   docUser.update({
-                    'name': 'James',
+                    'adSoyad': 'James',
                   });
 
                   // Update nested fields
                   docUser.update({
-                    'city.name': 'London',
+                    'city.adSoyad': 'London',
                   });
                 },
               ),

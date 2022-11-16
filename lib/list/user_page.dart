@@ -17,44 +17,53 @@ class UserPage extends StatefulWidget {
 
 class _UserPageState extends State<UserPage> {
   final formKey = GlobalKey<FormState>();
-  late TextEditingController controllerName;
-  late TextEditingController controllerNo;
-  late TextEditingController controllerSu;
-  late TextEditingController controllerElk;
-  late TextEditingController controllerIsi;
-  late TextEditingController controllerDate;
+  late TextEditingController controllerdaireNo;
+  late TextEditingController controllerAdSoyad;
+  late TextEditingController controllerTelefon;
+  late TextEditingController controllerProtokol;
+  late TextEditingController controllersayacTipi;
+  late TextEditingController controllerSayacNo;
+  late TextEditingController controllersonOkumaTarih;
+  late TextEditingController controllerSonEndeks;
 
   @override
   void initState() {
     super.initState();
 
-    controllerName = TextEditingController();
-    controllerNo = TextEditingController();
-    controllerSu = TextEditingController();
-    controllerElk = TextEditingController();
-    controllerIsi = TextEditingController();
-    controllerDate = TextEditingController();
+    controllerdaireNo = TextEditingController();
+    controllerAdSoyad = TextEditingController();
+    controllerTelefon = TextEditingController();
+    controllerProtokol = TextEditingController();
+    controllersayacTipi = TextEditingController();
+    controllerSayacNo = TextEditingController();
+    controllersonOkumaTarih = TextEditingController();
+    controllerSonEndeks = TextEditingController();
 
     if (widget.user != null) {
       final user = widget.user!;
 
-      controllerName.text = user.name;
-      controllerNo.text = user.daireNo.toString();
-      controllerSu.text = user.daireSu.toString();
-      controllerElk.text = user.daireElk.toString();
-      controllerIsi.text = user.daireIsi.toString();
-      controllerDate.text = DateFormat('yyyy-MM-dd').format(user.tarih);
+      controllerdaireNo.text = user.daireNo.toString();
+      controllerAdSoyad.text = user.adSoyad;
+      controllerTelefon.text = user.telefon.toString();
+      controllerProtokol.text = user.protokol.toString();
+      controllersayacTipi.text = user.sayacTipi.toString();
+      controllerSayacNo.text = user.sayacNo.toString();
+      controllersonOkumaTarih.text = user.sonOkumaTarih.toString();
+      controllerSonEndeks.text = user.sonEndeks.toString();
     }
   }
 
   @override
   void dispose() {
-    controllerName.dispose();
-    controllerNo.dispose();
-    controllerSu.dispose();
-    controllerElk.dispose();
-    controllerIsi.dispose();
-    controllerDate.dispose();
+
+    controllerdaireNo.dispose();
+    controllerAdSoyad.dispose();
+    controllerTelefon.dispose();
+    controllerProtokol.dispose();
+    controllersayacTipi.dispose();
+    controllerSayacNo.dispose();
+    controllersonOkumaTarih.dispose();
+    controllerSonEndeks.dispose();
 
     super.dispose();
   }
@@ -65,7 +74,7 @@ class _UserPageState extends State<UserPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(isEditing ? controllerName.text : 'Daire Ekle'),
+        title: Text(isEditing ? controllerAdSoyad.text : 'daireNo Ekle'),
         actions: [
           if (isEditing)
             IconButton(
@@ -76,7 +85,7 @@ class _UserPageState extends State<UserPage> {
                 final snackBar = SnackBar(
                   backgroundColor: Colors.green,
                   content: Text(
-                    '${controllerNo.text} to Firebase!',
+                    '${controllerdaireNo.text} Silindi',
                     style: const TextStyle(fontSize: 24),
                   ),
                 );
@@ -92,61 +101,77 @@ class _UserPageState extends State<UserPage> {
         child: ListView(
           padding: const EdgeInsets.all(16),
           children: <Widget>[
-            TextFormField(
-              controller: controllerName,
-              decoration: decoration('İsim'),
-              validator: (text) =>
-                  text != null && text.isEmpty ? 'Geçersiz değer' : null,
-            ),
-            const SizedBox(height: 24),
-            TextFormField(
-              controller: controllerNo,
-              decoration: decoration('Daire No'),
+             TextFormField(
+              controller: controllerdaireNo,
+              decoration: decoration('daireNo No'),
               keyboardType: TextInputType.number,
               validator: (text) =>
                   text != null && text.isEmpty ? 'Geçersiz değer' : null,
             ),
             const SizedBox(height: 24),
+
             TextFormField(
-              controller: controllerSu,
-              decoration: decoration('Su'),
-              keyboardType: TextInputType.number,
-              validator: (text) => text != null && int.tryParse(text) == null
-                  ? 'Geçersiz değer'
-                  : null,
+              controller: controllerAdSoyad,
+              decoration: decoration('Ad Soyad'),
+              validator: (text) =>
+                  text != null && text.isEmpty ? 'Geçersiz değer' : null,
             ),
             const SizedBox(height: 24),
+           
             TextFormField(
-              controller: controllerElk,
-              decoration: decoration('Elektrik'),
+              controller: controllerTelefon,
+              decoration: decoration('Telefon'),
               keyboardType: TextInputType.number,
               validator: (text) =>
                   text != null && text.isEmpty ? 'Geçersiz değer' : null,
             ),
             const SizedBox(height: 24),
+
             TextFormField(
-              controller: controllerIsi,
-              decoration: decoration('Isı'),
+              controller: controllerProtokol,
+              decoration: decoration('Protokol'),
               keyboardType: TextInputType.number,
               validator: (text) =>
                   text != null && text.isEmpty ? 'Geçersiz değer' : null,
             ),
             const SizedBox(height: 24),
-            DateTimeField(
-              initialValue: widget.user?.tarih,
-              controller: controllerDate,
+
+            TextFormField(
+              controller: controllersayacTipi,
+              decoration: decoration('Sayaç Tipi'),
+              keyboardType: TextInputType.number,
+              validator: (text) =>
+                  text != null && text.isEmpty ? 'Geçersiz değer' : null,
+            ),
+            const SizedBox(height: 24),
+
+            TextFormField(
+              controller: controllerSayacNo,
+              decoration: decoration('Sayaç No'),
+              keyboardType: TextInputType.number,
+              validator: (text) =>
+                  text != null && text.isEmpty ? 'Geçersiz değer' : null,
+            ),
+            const SizedBox(height: 24),
+
+            TextFormField(
+              controller: controllersonOkumaTarih,
               decoration: decoration('Tarih'),
-              validator: (dateTime) =>
-                  dateTime == null ? 'Geçersiz Tarih' : null,
-              format: DateFormat('yyyy-MM-dd'),
-              onShowPicker: (context, currentValue) => showDatePicker(
-                context: context,
-                firstDate: DateTime(1900),
-                lastDate: DateTime(2100),
-                initialDate: currentValue ?? DateTime.now(),
-              ),
+              keyboardType: TextInputType.number,
+              validator: (text) =>
+                  text != null && text.isEmpty ? 'Geçersiz değer' : null,
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 24),
+
+            TextFormField(
+              controller: controllerSonEndeks,
+              decoration: decoration('Son Endeks'),
+              keyboardType: TextInputType.number,
+              validator: (text) =>
+                  text != null && text.isEmpty ? 'Geçersiz değer' : null,
+            ),
+            const SizedBox(height: 24),
+
             ElevatedButton(
               child: Text(isEditing ? 'Güncelle' : 'Oluştur'),
               onPressed: () {
@@ -154,13 +179,15 @@ class _UserPageState extends State<UserPage> {
 
                 if (isValid) {
                   final user = User(
-                    id: widget.user?.id ?? '',
-                    name: controllerName.text,
-                    daireNo: int.parse(controllerNo.text),
-                    daireSu: int.parse(controllerSu.text),
-                    daireElk: int.parse(controllerElk.text),
-                    daireIsi: int.parse(controllerIsi.text),
-                    tarih: DateTime.parse(controllerDate.text),
+                    daireNo: int.parse(controllerdaireNo.text),
+                    //daireNo: controllerdaireNo.text,
+                    adSoyad: controllerAdSoyad.text,
+                    telefon: controllerTelefon.text,
+                    protokol: int.parse(controllerProtokol.text),
+                    sayacTipi: int.parse(controllersayacTipi.text),
+                    sayacNo: controllerSayacNo.text,
+                    sonOkumaTarih: controllersonOkumaTarih.text,
+                    sonEndeks: int.parse(controllerSonEndeks.text),
                   );
 
                   if (isEditing) {
@@ -173,7 +200,7 @@ class _UserPageState extends State<UserPage> {
                   final snackBar = SnackBar(
                     backgroundColor: Colors.green,
                     content: Text(
-                      'Daire ${controllerNo.text} Başarıyla $action.',
+                      'daireNo ${controllerdaireNo.text} Başarıyla $action.',
                       style: const TextStyle(fontSize: 24),
                     ),
                   );
@@ -196,14 +223,13 @@ class _UserPageState extends State<UserPage> {
 
   Future createUser(User user) async {
     final docUser = FirebaseFirestore.instance.collection('daire').doc();
-    user.id = docUser.id;
 
     final json = user.toJson();
     await docUser.set(json);
   }
 
   Future updateUser(User user) async {
-    final docUser = FirebaseFirestore.instance.collection('daire').doc(user.id);
+    final docUser = FirebaseFirestore.instance.collection('daire').doc(user.adSoyad);
 
     final json = user.toJson();
     await docUser.update(json);
@@ -211,7 +237,7 @@ class _UserPageState extends State<UserPage> {
 
   Future deleteUser(User user) async {
     /// Reference to document
-    final docUser = FirebaseFirestore.instance.collection('daire').doc(user.id);
+    final docUser = FirebaseFirestore.instance.collection('daire').doc(user.adSoyad);
 
     await docUser.delete();
   }
